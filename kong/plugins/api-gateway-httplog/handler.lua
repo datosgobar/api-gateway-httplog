@@ -107,8 +107,11 @@ function plugin:log(plugin_conf)
     token = token[1]
   end
 
+  if token ~= nil then
+    token = tostring(token)
+  end
+
   user_agent = tostring(user_agent)
-  token = tostring(token)
 
   local start_time = os.date("!%Y-%m-%dT%TZ", start_time_nginx)
   local JSONRequestArray = {
