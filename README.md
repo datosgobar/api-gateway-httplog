@@ -21,12 +21,13 @@ cd api-gateway-httplog/
 
 El plugin debe ser activado _por API_. El mismo require los siquirentes campos:
 
-| Campo   | Requerido | Descripción                                 |
-|---------|-----------|---------------------------------------------|
-|name     | sí        | Nombre del plugin                           |
-|token    | sí        | Token de acceso al "endpoint"               |
-|endpoint | sí        | "URL" a la cual registrar los datos         |
-|api_data | No        | Parámetro para relacionar datos con una API |
+| Campo             | Requerido | Descripción                                 |
+|-------------------|-----------|---------------------------------------------|
+|name               | sí        | Nombre del plugin                           |
+|token              | sí        | Token de acceso al "endpoint"               |
+|endpoint           | sí        | "URL" a la cual registrar los datos         |
+|api_data           | No        | Parámetro para relacionar datos con una API |
+|token_header_name  | sí        | Nombre del header donde se envia el token de cliente |
 
 
 Ejemplo:

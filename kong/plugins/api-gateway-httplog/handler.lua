@@ -97,12 +97,18 @@ function plugin:log(plugin_conf)
   local request_time = ngx.now() - start_time_nginx
   local status_code = ngx.status
   local user_agent = ngx.req.get_headers()['User-Agent']
+  local token = ngx.req.get_headers()[plugin_conf.token_header_name]
 
   if (type(user_agent) == "table") then
     user_agent = user_agent[1]
   end
 
+  if (type(token) == "table") then
+    token = token[1]
+  end
+
   user_agent = tostring(user_agent)
+  token = tostring(token)
 
   local start_time = os.date("!%Y-%m-%dT%TZ", start_time_nginx)
   local JSONRequestArray = {
@@ -113,7 +119,8 @@ function plugin:log(plugin_conf)
     start_time = start_time,
     request_time = request_time,
     status_code = status_code,
-    user_agent = user_agent
+    user_agent = user_agent,
+    token = token
   }
 
   if plugin_conf.api_data then
