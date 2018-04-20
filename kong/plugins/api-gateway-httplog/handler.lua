@@ -97,7 +97,7 @@ function plugin:log(plugin_conf)
   local request_time = ngx.now() - start_time_nginx
   local status_code = ngx.status
   local user_agent = ngx.req.get_headers()['User-Agent']
-  local token = ngx.req.get_headers()[plugin_conf.token_header_name]
+  local token = ngx.req.get_headers()['jwt']
 
   if (type(user_agent) == "table") then
     user_agent = user_agent[1]
