@@ -98,6 +98,7 @@ function plugin:log(plugin_conf)
   local status_code = ngx.status
   local user_agent = ngx.req.get_headers()['User-Agent']
   local token = ngx.req.get_headers()['jwt']
+  local x_source = ngx.req.get_headers()['X-Source']
 
   if (type(user_agent) == "table") then
     user_agent = user_agent[1]
@@ -123,7 +124,8 @@ function plugin:log(plugin_conf)
     request_time = request_time,
     status_code = status_code,
     user_agent = user_agent,
-    token = token
+    token = token,
+    x_source = x_source
   }
 
   if plugin_conf.api_data then
