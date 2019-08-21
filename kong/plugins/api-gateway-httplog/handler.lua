@@ -100,6 +100,8 @@ function plugin:log(plugin_conf)
   local token = ngx.req.get_headers()['jwt']
   local x_source = ngx.req.get_headers()['X-Source']
   local request_method = ngx.req.get_method()
+  local referer = ngx.req.get_headers()['Referer']
+  print('Referer es:' .. referer)
 
   if (type(user_agent) == "table") then
     user_agent = user_agent[1]
@@ -127,7 +129,8 @@ function plugin:log(plugin_conf)
     user_agent = user_agent,
     token = token,
     x_source = x_source,
-    request_method = request_method
+    request_method = request_method,
+    referer = referer
   }
 
   if plugin_conf.api_data then
