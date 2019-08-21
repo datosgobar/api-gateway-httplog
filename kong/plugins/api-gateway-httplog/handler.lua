@@ -101,7 +101,6 @@ function plugin:log(plugin_conf)
   local x_source = ngx.req.get_headers()['X-Source']
   local request_method = ngx.req.get_method()
   local referer = ngx.req.get_headers()['Referer']
-  print('Referer es:' .. referer)
 
   if (type(user_agent) == "table") then
     user_agent = user_agent[1]
